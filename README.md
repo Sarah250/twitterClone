@@ -1,2 +1,2 @@
-# twitterClone
- A twitter clone application using lamp stack and Laravel
+# twitter_clone
+ A twitter clone aplication using lamp stack and Laravel

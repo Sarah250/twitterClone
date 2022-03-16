@@ -4,10 +4,6 @@
 
 <div class="container">
     <div>
-<<<<<<< Updated upstream
-    <h1>Ola {{$user->username}} </h1>
-    <a href=""> Add new Tweet </a>
-=======
         <h1>Ola {{$user->username}} </h1>
         <a href="/t/create"> Add new Tweet </a>
        
@@ -28,7 +24,6 @@
                 </div>
         @endforeach        
         </div>
->>>>>>> Stashed changes
     </div>
 </div>
 @endsection

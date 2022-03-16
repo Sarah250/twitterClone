@@ -20,4 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/t/create',[App\Http\Controllers\TweetsController::class, 'create']);
+
+Route::post('/t',[App\Http\Controllers\TweetsController::class, 'store']);
+
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+
+

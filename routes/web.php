@@ -27,3 +27,5 @@ Route::post('/t',[App\Http\Controllers\TweetsController::class, 'store']);
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 
 
+Route::delete('/profile/{id}',[App\Http\Controllers\TweetsController::class, 'delete_tweet'])->name('profile.delete_tweet');
+

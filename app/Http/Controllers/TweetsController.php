@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class TweetsController extends Controller
 {
 
@@ -25,6 +26,6 @@ class TweetsController extends Controller
 
         auth()->user()->tweets()->create($data);
 
-        dd(request()->all());
+        return redirect('/profile/' .auth()->user()->id);
     }
 }

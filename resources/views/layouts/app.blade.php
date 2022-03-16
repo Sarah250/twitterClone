@@ -71,6 +71,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="/profile/{{auth()->id()}}/edit">
+                                        Change Password
+                                    </a>
+
                                 </div>
                             </li>
                         @endguest

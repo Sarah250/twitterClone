@@ -26,7 +26,11 @@ class TweetsController extends Controller
             'tweet' => 'required',
         ]);
 
-        auth()->user()->tweets()->create($data);
+        $entry =  auth()->user()->tweets()->create($data);
+
+        $entry->order = $entry->id;
+
+        $entry->save();
 
         return redirect('/profile/' .auth()->user()->id);
     }
@@ -38,5 +42,71 @@ class TweetsController extends Controller
         $tweet->delete();
 
         return redirect('/profile/' .auth()->user()->id);
+    }
+
+    public function up($tweet_id, User $user){
+            //dd($twitter_id,$user->tweets->count());
+
+            $tweetsArray = $user->tweets;
+
+            $length = count($user->tweets);
+            
+            $tweetUp = Tweet::find($tweet_id);
+
+           for($i = 0; $i < $length; $i++)
+            {
+                
+                if ($tweetsArray[$i]->id == $tweet_id and $i!==0)
+                {
+                    $tweetDown = Tweet::find($tweetsArray[$i-1]->id);
+
+                    $orderUp = $tweetUp->order;
+                    $orderDown = $tweetDown->order;
+                    
+                    $tweetDown->order = $orderUp;
+                    $tweetUp->order = $orderDown;
+                    
+
+                    $tweetUp->save();
+                    $tweetDown->save();
+
+
+                } 
+            }
+            return redirect('/profile/' .auth()->user()->id);
+    }
+
+    public function down($tweet_id, User $user){
+        $tweetsArray = $user->tweets;
+
+        $length = count($user->tweets);
+        
+        $tweetDown = Tweet::find($tweet_id);  
+
+           
+
+           for($i = 0; $i < $length; $i++)
+            {
+               
+                if ($tweetsArray[$i]->id == $tweet_id and $i != $length-1)
+                {
+                    
+                    
+                    $tweetUp = Tweet::find($tweetsArray[$i+1]->id);
+
+                    $orderUp = $tweetUp->order;
+                    $orderDown = $tweetDown->order;
+                    
+                    $tweetDown->order = $orderUp;
+                    $tweetUp->order = $orderDown;
+                    
+
+                    $tweetUp->save();
+                    $tweetDown->save();
+
+
+                } 
+            }
+            return redirect('/profile/' .auth()->user()->id);
     }
 }

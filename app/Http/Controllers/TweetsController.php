@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
 
+
 class TweetsController extends Controller
 {
 
@@ -27,7 +28,7 @@ class TweetsController extends Controller
 
         auth()->user()->tweets()->create($data);
 
-        dd(request()->all());
+        return redirect('/profile/' .auth()->user()->id);
     }
 
     public function delete_tweet($id){

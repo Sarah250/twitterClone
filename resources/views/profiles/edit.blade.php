@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class='header'>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+</div>
 <div class="container">
 <div class="row">
         <h1> Change Password </h1>

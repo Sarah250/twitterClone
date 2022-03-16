@@ -28,3 +28,5 @@ Route::get('/profile/{user}/edit',[App\Http\Controllers\ProfilesController::clas
 
 Route::patch('/profile/{user}/edit',[App\Http\Controllers\ProfilesController::class, 'change_password'])->name('profile.change_password');
 
+Route::delete('/profile/{id}',[App\Http\Controllers\TweetsController::class, 'delete_tweet'])->name('profile.delete_tweet');
+

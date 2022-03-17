@@ -14,13 +14,16 @@ class CreateTweetsTable extends Migration
     public function up()
     {
         Schema::create('tweets', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('tweet')->nullable;
             $table->timestamps();
+            $table->id();
+
+            $table->unsignedBigInteger('order')->default(0);
 
             $table->index('user_id');
         });
+        
     }
 
     /**

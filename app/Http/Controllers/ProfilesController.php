@@ -33,8 +33,7 @@ class ProfilesController extends Controller
             $user->password = Hash::make($data['password']);
             $user->save();
 
-            session()->flash('password_success', 'Password has been changed successfuly!',array('timeout' => 3000));
-            return view('profiles.edit',compact('user'));
+            return redirect('/profile/' .auth()->user()->id);
         }
         else 
         {

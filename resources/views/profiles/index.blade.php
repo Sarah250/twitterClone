@@ -57,11 +57,12 @@
                                         {{date('d, M, Y', strtotime($tweet->created_at))}}
                                     </div>
                                     <div class="row">
-                                    <form method="post" action="{{ route('profile.delete_tweet',['id' => $tweet->id]) }}">
+                                        <div class="d-flex"> 
+                                        <form method="post" action="{{ route('profile.delete_tweet',['id' => $tweet->id]) }}">
                                             @csrf
                                             @method('DELETE')
 
-                                            <div class="column">
+                                            <div class="p-2">
                                                 <button type="submit" class="btn btn-danger">
                                                     Delete
                                                 </button>
@@ -72,7 +73,7 @@
                                             @csrf
                                             @method('PATCH')
 
-                                            <div class="column">
+                                            <div class="p-2">
                                                 <button type="submit" class="btn btn-primary">
                                                     Up
                                                 </button>
@@ -83,13 +84,14 @@
                                             @csrf
                                             @method('PATCH')
 
-                                            <div class="column">
+                                            <div class="p-2">
                                                 <button type="submit" class="btn btn-secondary">
                                                     Down
                                                 </button>
                             
                                                 </div>
                                         </form>
+                                        </div>
                                     
                                        <!--  {!! Form::open(['method' => 'PATCH', 'route' => ['profile.down', $tweet->id,$user]]) !!}
                                             <div class="form-group mb-3">
